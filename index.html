@@ -6597,6 +6597,8 @@
     
     if (units == "metric") {
       document.getElementById("metricradio").checked = true;
+    } else if (units == "british") {
+      document.getElementById("britishradio").checked = true;
     } else {
       document.getElementById("imperialradio").checked = true;
     }
@@ -6618,7 +6620,7 @@
     while (div.firstChild) {
       div.removeChild(div.firstChild);
     }
-    if (units == "metric") {
+    if (units == "metric" || units == "british") {
       var text = document.createTextNode("C");
       div.appendChild(text);
     } else {
@@ -6640,7 +6642,7 @@
     while (div.firstChild) {
       div.removeChild(div.firstChild);
     }
-    if (units == "metric") {
+    if (units == "metric" || units == "british") {
       var text = document.createTextNode("kg");
       div.appendChild(text);
     } else {
@@ -6652,14 +6654,14 @@
     if (prevunits != units) {
       var input = document.getElementById("consumpvalue");
       var consump = input.value;
-      if (prevunits == "imperial" && units == "metric") {
+      if ((prevunits == "imperial" || prevunits == "british") && units == "metric") {
         if (cons_units == "energy_per_distance") {
           consump = consump/1.609/0.96;
         } else if (cons_units == "distance_per_energy"){
           consump = consump*1.609*0.96;
         }
       }
-      if (units == "imperial" && prevunits == "metric") {
+      if ((units == "imperial" || units == "british") && prevunits == "metric") {
         if (cons_units == "energy_per_distance") {
           consump = consump*1.609*0.96;
         } else if (cons_units == "distance_per_energy"){
@@ -6670,10 +6672,10 @@
       
       var input = document.getElementById("max_speed");
       var max_speed = input.value;
-      if (prevunits == "imperial" && units == "metric") {
+      if ((prevunits == "imperial" || prevunits == "british") && units == "metric") {
         max_speed = max_speed*1.609;
       }
-      if (units == "imperial" && prevunits == "metric") {
+      if ((units == "imperial" || units == "british") && prevunits == "metric") {
         max_speed = max_speed/1.609;
       }
       input.value = Math.round(max_speed);
@@ -6681,30 +6683,30 @@
       var form = document.getElementById('plan-form');
       var input = form.elements["outsidetemp"];
       var outside_temp = input.value;
-      if (prevunits == "imperial" && units == "metric") {
+      if (prevunits == "imperial" && (units == "metric" || units == "british")) {
         outside_temp = (outside_temp-32)/1.8;
       }
-      if (units == "imperial" && prevunits == "metric") {
+      if (units == "imperial" && (prevunits == "metric" || prevunits == "british")) {
         outside_temp = (outside_temp*1.8+32);
       }
       input.value = Math.round(outside_temp);
       
       var input = form.elements["windspeed"];
       var wind_speed = input.value;
-      if (prevunits == "imperial" && units == "metric") {
+      if ((prevunits == "imperial" || prevunits == "british") && units == "metric") {
         wind_speed = wind_speed*1.609/3.6;
       }
-      if (units == "imperial" && prevunits == "metric") {
+      if ((units == "imperial" || units == "british") && prevunits == "metric") {
         wind_speed = wind_speed/1.609*3.6;
       }
       input.value = Math.round(wind_speed);
       
       var input = form.elements["extra_weight"];
       var extra_weight = input.value;
-      if (prevunits == "imperial" && units == "metric") {
+      if (prevunits == "imperial" && (units == "metric" || units == "british")) {
         extra_weight = extra_weight*0.45;
       }
-      if (units == "imperial" && prevunits == "metric") {
+      if (units == "imperial" && (prevunits == "metric" || prevunits == "british")) {
         extra_weight = extra_weight/0.45;
       }
       input.value = Math.round(extra_weight);
@@ -8860,6 +8862,7 @@
               <tr>
                 <td class=settingslabel>Units</td><td class=settingstext><input type=radio class="settingsradio prevent-double-click" id=metricradio name=units value=metric checked onClick="setUnits('metric');"> <a onClick="setUnits('metric');">Metric</a>
                   <input type=radio class="settingsradio  prevent-double-click" name=units value=imperial id=imperialradio onClick="setUnits('imperial')"> <a onClick="setUnits('imperial');">Imperial</a> 
+                  <input type=radio class="settingsradio  prevent-double-click" name=units value=imperial id=britishradio onClick="setUnits('british')"> <a onClick="setUnits('british');">British</a> 
                 </td>
               </tr>
               <tr>
