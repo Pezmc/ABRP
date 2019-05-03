@@ -2211,7 +2211,7 @@
           td = document.createElement("td");
           var div = document.createElement("div");
           var html = '<div class="driveheader">Speed  </div><span class="drivetext">';
-          if (units == "imperial") {
+          if (units == "imperial" || units == "british") {
             html += Math.round(data["car_speed"]/1.609);
             html += '</span> <span class="driveunits">mi/h</span>';
           } else {
@@ -3131,7 +3131,7 @@
       settingskey = "chargeoverhead"
     }else if (key == "typ_consumption") {
       settingskey = "consumption";
-      if (units == "imperial") {
+      if (units == "imperial" || units == "british") {
         val = Math.round(val*1.609*0.96);
       } else {
         val = Math.round(val);
@@ -3150,7 +3150,7 @@
         val = Math.round(val*1.8+32);
       }
     } else if (key == "wind_speed") {
-      if (units == "imperial") {
+      if (units == "imperial" || units == "british") {
         val = Math.round(val*3.6/1.609);
       }
     } else if (key == "extra_weight") {
@@ -3881,7 +3881,7 @@
     settings["charge_overhead"] = form.elements["chargeoverhead"].value;
     settings["speed_factor"] = form.elements["speedoverlimit"].value;
     var max_speed = form.elements["max_speed"].value/3.6;
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       max_speed *= 1.609;
     }
     settings["max_speed"] = max_speed;
@@ -3890,7 +3890,7 @@
       //Flip the units over if in distance_per_energy.  Need units in Wh/km for planning.
       cons = convertConsUnits(cons);
     }
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       cons = cons/1.609/0.96;
     }
     settings["typ_consumption"] = cons;
@@ -3910,8 +3910,10 @@
     if (units == "imperial") {
       outside_temp = (outside_temp-32)/1.8;
       battery_temp = (battery_temp-32)/1.8;
-      wind_speed = wind_speed*1.609/3.6;
       extra_weight = 0.45*extra_weight;
+    }
+    if (units == "imperial" || units == "british") {
+      wind_speed = wind_speed*1.609/3.6;
     }
     settings["battery_degradation"] = form.elements["battery_degradation"].value;
     settings["outside_temp"] = outside_temp;
@@ -4018,7 +4020,7 @@
       //Flip the units over if in distance_per_energy.  Need units in Wh/km for planning.
       cons = convertConsUnits(cons);
     }
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       cons = cons/1.609/0.96;
     }
     
@@ -4072,7 +4074,7 @@
     }
     
     setConsUnits("energy_per_distance");
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       form.elements["consumption"].value = Math.round(consump*1.609*0.96);
       form.elements["max_speed"].value = Math.round(max_speed/1.609);
     } else {
@@ -4845,7 +4847,7 @@
     if (units == "metric") {
       res = Math.round(dist)+"\xa0km";
     }
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       res = Math.round(dist/1.609)+"\xa0miles";
     }
     return res;
@@ -6115,7 +6117,7 @@
     form.elements["windspeed"].value = 0;
     popupSetValueById("winddir", "head");
     
-    if (units == "metric") {
+    if (units == "metric" || units == "british") {
       form.elements["outsidetemp"].value = "20";
     } else {
       form.elements["outsidetemp"].value = "68";
@@ -6260,7 +6262,7 @@
     var minutes = (Math.floor(day_seconds/60) % 60);
     
     var s = "";
-    if (units == "metric") {
+    if (units == "metric" || units == "british") {
       if (hours   < 10) {hours   = "0"+hours;}
       if (minutes < 10) {minutes = "0"+minutes;}
       s = hours+':'+minutes;
@@ -7191,19 +7193,24 @@
     if ("batt_temp" in res) {
       batt_temp = res["batt_temp"]
     }
+    // Speed
     if (units == "metric") {
       document.getElementById("speed_units").innerHTML = "km/h";
+    } else {
+      speed = speed/1.609;
+      document.getElementById("speed_units").innerHTML = "mi/h";
+    }
+    // Temperature
+    if (units == "metric" || units == "british") {
       document.getElementById("ext_temp_units").innerHTML = "°C";
       document.getElementById("batt_temp_units").innerHTML = "°C";
     } else {
-      speed = speed/1.609;
       if (outside_temp) {
         outside_temp = outside_temp*9/5 + 32;
       }
       if (batt_temp) {
         batt_temp = batt_temp*9/5 + 32;
       }
-      document.getElementById("speed_units").innerHTML = "mi/h";
       document.getElementById("ext_temp_units").innerHTML = "°F";
       document.getElementById("batt_temp_units").innerHTML = "°F";
     }
@@ -8668,7 +8675,7 @@
     div.className = "inputchargetext";
     div.style.marginTop = "15px";
     var s = secondsToTimeStr(alt_step.drive_duration+alt_step.wait_duration);
-    if (units == "imperial") {
+    if (units == "imperial" || units == "british") {
       s += ", "+Math.round(alt_step.drive_dist/1609)+" miles"
     } else {
       s += ", "+Math.round(alt_step.drive_dist/1000)+" km"
