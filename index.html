@@ -8,22 +8,22 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#ffffff"/>
 
-  <link rel="icon" type="image/png" href="icon/abrp_icon.png" />
-  <link rel="stylesheet" type="text/css" href="styles.css?v=3.6.5">
-  <link rel="stylesheet" id="nomapstyles" type="text/css" href="nomapstyles.css?v=3.6.0" disabled=1>
-  <link rel="stylesheet" id="nightstyles" type="text/css" href="nightstyles.css?v=3.6.0" disabled=1>
-  <link rel="apple-touch-icon" href="icon/abrp_icon.png"/>
-  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" type="image/png" href="https://abetterrouteplanner.com/icon/abrp_icon.png" />
+  <link rel="stylesheet" type="text/css" href="https://abetterrouteplanner.com/styles.css?v=3.6.5">
+  <link rel="stylesheet" id="nomapstyles" type="text/css" href="https://abetterrouteplanner.com/nomapstyles.css?v=3.6.0" disabled=1>
+  <link rel="stylesheet" id="nightstyles" type="text/css" href="https://abetterrouteplanner.com/nightstyles.css?v=3.6.0" disabled=1>
+  <link rel="apple-touch-icon" href="https://abetterrouteplanner.com/icon/abrp_icon.png"/>
+  <link rel="manifest" href="https://abetterrouteplanner.com/manifest.json"/>
 
   <title>A Better Routeplanner</title>
 </head>
-<script type="text/javascript" async src="js/chargers.js?v=3.6.8"></script>
-<script type="text/javascript" async src="js/pageinated-div.js?v=3.6.2.3"></script>
-<script type="text/javascript" defer src="js/location_autocomplete.js?v=3.6.0"></script>
-<script type="text/javascript" async src="js/utilities.js?v=3.6.2"></script>  
-<script type="text/javascript" defer src="js/waypoint-search.js?v=3.6.0"></script>
-<script type="text/javascript" defer src="js/icon_stash.js?v=3.6.2"></script>
-<script type="text/javascript" defer src="js/NoSleep.js"></script>
+<script type="text/javascript" async src="https://abetterrouteplanner.com/js/chargers.js?v=3.6.8"></script>
+<script type="text/javascript" async src="https://abetterrouteplanner.com/js/pageinated-div.js?v=3.6.2.3"></script>
+<script type="text/javascript" defer src="https://abetterrouteplanner.com/js/location_autocomplete.js?v=3.6.0"></script>
+<script type="text/javascript" async src="https://abetterrouteplanner.com/js/utilities.js?v=3.6.2"></script>  
+<script type="text/javascript" defer src="https://abetterrouteplanner.com/js/waypoint-search.js?v=3.6.0"></script>
+<script type="text/javascript" defer src="https://abetterrouteplanner.com/js/icon_stash.js?v=3.6.2"></script>
+<script type="text/javascript" defer src="https://abetterrouteplanner.com/js/NoSleep.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!--<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js' async></script>
@@ -41,7 +41,7 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 </script>
 <!-- Include the UI fix for touchscreens -->
-<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js?v=2"></script>
+<script type="text/javascript" src="https://abetterrouteplanner.com/js/jquery.ui.touch-punch.min.js?v=2"></script>
 <script type="text/javascript">
   
   var staticurl = ""; // Disable server-side content caching for now "https://d25n4l2pmvdqh8.cloudfront.net/";
@@ -388,7 +388,7 @@
   var last_reload_question = null;
 
   function getVersion() {
-    $.getJSON("db_data.py/get_ui_version", { format: "json"})
+    $.getJSON("https://abetterrouteplanner.com/db_data.py/get_ui_version", { format: "json"})
         .done(function (res) {
           checkVersion(res.version);
         });
@@ -570,7 +570,7 @@
   }
 
   function getLocationInfo(lat, lon, callback) {
-    var url = "locationservice.py/posinfo?lat="+lat+"&lon="+lon;
+    var url = "https://abetterrouteplanner.com/locationservice.py/posinfo?lat="+lat+"&lon="+lon;
     $.getJSON(url, { format: "json"})
     .done(function (res) {
       if (res.status == "ok") {
@@ -1006,7 +1006,7 @@
     if (set_country_done) { // Only do once
       return;
     }
-    var url = "locationservice.py/get_location?lat="+latlon[0]+"&lon="+latlon[1];
+    var url = "https://abetterrouteplanner.com/locationservice.py/get_location?lat="+latlon[0]+"&lon="+latlon[1];
     set_country_ongoing = true;
     $.getJSON(url, { format: "json"})
     .done(function (res) {
@@ -1085,7 +1085,7 @@
   }
   
   function updateVisit(visittype, resource) {
-    var url = "db_data.py/user_visit";
+    var url = "https://abetterrouteplanner.com/db_data.py/user_visit";
     var data = "session_id="+session_id+"&visittype="+encodeURIComponent(visittype)+"&resource="+encodeURIComponent(resource);
     $.post({ url: url, data: data, dataType: "json" })
     .done(function (res) {
@@ -1211,7 +1211,7 @@
     }
     drive_logging_sending_to_idx = drive_logging_points.length;
 
-    var url = "client_logging.py/post_log"
+    var url = "https://abetterrouteplanner.com/client_logging.py/post_log"
     var data = "data="+encodeURIComponent(JSON.stringify(drive_logging_points));
     drive_logging_sending_in_progress = true;
     $.post({ url: url, data: data, dataType: "json" })
@@ -3239,10 +3239,10 @@
       }
     }
 
-    var settingsurl = 'db_data.py/get_settings?session_id='+session_id;
+    var settingsurl = 'https://abetterrouteplanner.com/db_data.py/get_settings?session_id='+session_id;
     
     if (plan_uuid) {
-      settingsurl = 'db_data.py/plan?plan_uuid='+plan_uuid;
+      settingsurl = 'https://abetterrouteplanner.com/db_data.py/plan?plan_uuid='+plan_uuid;
       server_settings_ver = -1;
       setStorageValue("initial_car_model_selected", true); // When loading a plan, skip asking for the first car model
     }
@@ -3550,7 +3550,7 @@
     setStorageValue("exclude_wps", chrg.exclude_ids);
     setStorageValue("preferred_network_ids", chrg.preferred_network_ids);
     if (loginemail && server_save) {
-      var settingsurl = 'db_data.py/set_settings';
+      var settingsurl = 'https://abetterrouteplanner.com/db_data.py/set_settings';
       var data = "session_id="+encodeURIComponent(session_id)+
       "&settings="+encodeURIComponent(JSON.stringify(server_settings));
       $.post({ url: settingsurl, data: data, dataType: "json" })
@@ -3567,7 +3567,7 @@
   }
   
   function loadCarModels() {
-    var url = 'car_model.py/get_carmodels';
+    var url = 'https://abetterrouteplanner.com/car_model.py/get_carmodels';
     $.get({ url: url, dataType: "json" })
     .done(function(data) {
       if (data.status == "ok") {
@@ -3811,7 +3811,7 @@
       return;
     }
 
-    url = "teslacmd.py/push_navigation";
+    url = "https://abetterrouteplanner.com/teslacmd.py/push_navigation";
     data = "lat="+step.lat+"&lon="+step.lon+"&address="+encodeURIComponent(step.name)+"&vehicle_id="+encodeURIComponent(vid)+"&token="+encodeURIComponent(token);
     $.post({ url: url, data: data, dataType: "json" })
         .done(function (result) {
@@ -5893,7 +5893,7 @@
         dest.push(tostep.lat+","+tostep.lon);
       }
       
-      var url = 'planner3.cgi';
+      var url = 'https://abetterrouteplanner.com/planner3.cgi';
       var urldata = 'destinations='+(dest.join("|"))
       urldata += "&cmd=quickroute";
       
@@ -6339,7 +6339,7 @@
       text += "§"+arriveperc;
       uridest.push(encodeURIComponent(text));
     }
-    var url = 'planner3.cgi';
+    var url = 'https://abetterrouteplanner.com/planner3.cgi';
     var urldata = 'destinations='+(uridest.join("|"))
     for (var key in settings) {
       urldata += "&"+key+"="+encodeURIComponent(settings[key]);
@@ -6468,7 +6468,7 @@
     refresh_route_count_handler = null;
     if ((aboutopen || fw_active)) {
       if  (browser_is_in_focus) {
-        $.getJSON("db_data.py/route_count", { format: "json"})
+        $.getJSON("https://abetterrouteplanner.com/db_data.py/route_count", { format: "json"})
         .done(function (count) {
           total_route_count = count;
           if (total_route_count >= 5000000 && fw_active == 0 && !is_car_browser) {
@@ -7261,7 +7261,7 @@
       return has_tlm
     }
     telemetry_req_in_progress = true;
-    var url = "telemetry.py/get_user_telemetry?session_id="+encodeURIComponent(session_id);
+    var url = "https://abetterrouteplanner.com/telemetry.py/get_user_telemetry?session_id="+encodeURIComponent(session_id);
     $.getJSON(url, { format: "json"})
     .done(function(data) {
       if (data.status == "ok") {
@@ -7293,9 +7293,9 @@
     }
     var url = "";
     if (tlm_type == "sharing") {
-      url = "telemetry.py/get_sharing_telemetry?uuid="+encodeURIComponent(sharing_uuid);
+      url = "https://abetterrouteplanner.com/telemetry.py/get_sharing_telemetry?uuid="+encodeURIComponent(sharing_uuid);
     } else if (session_id) {
-      url = "telemetry.py/get_user_telemetry?session_id="+encodeURIComponent(session_id);
+      url = "https://abetterrouteplanner.com/telemetry.py/get_user_telemetry?session_id="+encodeURIComponent(session_id);
     } else {
       return;
     }
@@ -7376,7 +7376,7 @@
     // (last 30 seconds) telemetry, then we call it an active session and use that data.
     // Need to acquire the following:
 
-    var url = "obd_telem.py/get_latest?session_id=" + session_id;
+    var url = "https://abetterrouteplanner.com/obd_telem.py/get_latest?session_id=" + session_id;
     var this_time = (new Date()).getTime() / 1000;
     if (obd_req_in_progress) {
       return;
@@ -8887,18 +8887,18 @@
                 <td class=settingslabel>Fast Chargers</td>
                 <td class=settingstext>
                   <input type=checkbox class="settingsinput prevent-double-click" name=SC size=10 onchange="onDCFCToggle('SC')" title="Use Tesla SuperChargers in planning, often provides the most optimal solution for Tesla route planning.">
-                  <img name=SCimg src="icon/overlay_icons/tesla_white.png" class=prevent-double-click title="Supercharger" alt="Supercharger" width="20" height="20" onClick="toggleCheckBox('SC')">
+                  <img name=SCimg src="https://abetterrouteplanner.com/icon/overlay_icons/tesla_white.png" class=prevent-double-click title="Supercharger" alt="Supercharger" width="20" height="20" onClick="toggleCheckBox('SC')">
                   <span class="checkboxlabel prevent-double-click" name=SClabel onClick="toggleCheckBox('SC')">Supercharger</span>
 
                   <input type=checkbox class="settingsinput prevent-double-click" name=tesla_ccs size=10 onchange="onDCFCToggle('tesla_ccs')" title="Use Tesla SuperChargers with CCS connector - this is the only Supercharger which fits a Model 3 in Europe.">
-                  <img name=SCimg src="icon/overlay_icons/tesla_white.png" class=prevent-double-click title="Tesla CCS" alt="Tesla CCS" width="20" height="20" onClick="toggleCheckBox('tesla_cc')">
+                  <img name=SCimg src="https://abetterrouteplanner.com/icon/overlay_icons/tesla_white.png" class=prevent-double-click title="Tesla CCS" alt="Tesla CCS" width="20" height="20" onClick="toggleCheckBox('tesla_cc')">
                   <span class="checkboxlabel prevent-double-click" name=SClabel onClick="toggleCheckBox('tesla_ccs')">Tesla CCS</span>
                 </tr>
                 <tr>
                   <td></td>
                   <td class=settingstext>
                     <input type=checkbox class="settingsinput prevent-double-click" name=ccs size=10 onchange="onDCFCToggle('ccs')" title="Use CCS chargers for planning. This will typically not give a guaranteed optimal solution.">
-                    <img name=ccsimg src="icon/overlay_icons/ccs_white.png" class=prevent-double-click title="CCS" alt="ccs" width="20" height="20" onClick="toggleCheckBox('ccs')">
+                    <img name=ccsimg src="https://abetterrouteplanner.com/icon/overlay_icons/ccs_white.png" class=prevent-double-click title="CCS" alt="ccs" width="20" height="20" onClick="toggleCheckBox('ccs')">
                     <span class="checkboxlabel prevent-double-click" name=ccslabel onClick="toggleCheckBox('ccs')">CCS</span>
                   </td>
                 </tr>
@@ -8906,7 +8906,7 @@
                   <td></td>
                   <td class=settingstext>
                     <input type=checkbox class="settingsinput prevent-double-click" name=chademo size=10 onchange="onDCFCToggle('chademo')" title="Use Chademo chargers for planning. This will typically not give a guaranteed optimal solution.">
-                    <img name=chademoimg src="icon/overlay_icons/chademo_white.png" class=prevent-double-click title="ChaDeMo" alt="ChaDeMo" width="20" height="20" onClick="toggleCheckBox('chademo')">
+                    <img name=chademoimg src="https://abetterrouteplanner.com/icon/overlay_icons/chademo_white.png" class=prevent-double-click title="ChaDeMo" alt="ChaDeMo" width="20" height="20" onClick="toggleCheckBox('chademo')">
                     <span class="checkboxlabel prevent-double-click" name=chademolabel onClick="toggleCheckBox('chademo')">ChaDeMo</span>
                   </td>
                 </tr>
@@ -8970,69 +8970,69 @@
     </div>
     <div class="overlay-hidebutton-center">
       <div class="overlay-hidebutton prevent-double-click" onClick="hideRouteplanner();">
-        <img class="hidebutton" src="icon/up_expand_icon.png"/>
+        <img class="hidebutton" src="https://abetterrouteplanner.com/icon/up_expand_icon.png"/>
       </div>
     </div>
   </div>
   <div id="toolbar" class="nomaptoolbar">
     <span>
-      <img class="toolbar-logo" src="icon/abrp_icon.png"/>
+      <img class="toolbar-logo" src="https://abetterrouteplanner.com/icon/abrp_icon.png"/>
     </span>
     <span><div class="toolbar-button toolbar-planbutton prevent-double-click" id="toolbar-planbutton" onClick="setNoMapDriveDisplay('plan');">
-      <img id="toolbar-planimg" class="toolbar-icon" src="icon/list_icon.png">
+      <img id="toolbar-planimg" class="toolbar-icon" src="https://abetterrouteplanner.com/icon/list_icon.png">
     </div></span>
     <span><div class="toolbar-button toolbar-graphbutton prevent-double-click" id="toolbar-graphbutton" onClick="setNoMapDriveDisplay('graph');">
-      <img id="toolbar-graphimg" class="toolbar-icon" src="icon/graph_icon.png">
+      <img id="toolbar-graphimg" class="toolbar-icon" src="https://abetterrouteplanner.com/icon/graph_icon.png">
     </div></span>
     <span style="display: none;"><div class="toolbar-button toolbar-detailsbutton prevent-double-click" id="toolbar-detailsbutton" onClick="setNoMapDriveDisplay('details');">
-      <img id="toolbar-detailsimg" class="toolbar-icon" src="icon/details.png">
+      <img id="toolbar-detailsimg" class="toolbar-icon" src="https://abetterrouteplanner.com/icon/details.png">
     </div></span>
     <span><div class="toolbar-button toolbar-planbutton prevent-double-click" id="toolbar-nightbutton" onClick="toggleNight();">
-      <img id="toolbar-nightimg" class="toolbar-icon" src="icon/night_icon.png">
+      <img id="toolbar-nightimg" class="toolbar-icon" src="https://abetterrouteplanner.com/icon/night_icon.png">
     </div></span>
     <span><div class="toolbar-button toolbar-mapbutton prevent-double-click" id="toolbar-mapbutton" onClick="toggleMap();">
-      <img class="toolbar-icon" src="icon/map-marker-icon.png">
+      <img class="toolbar-icon" src="https://abetterrouteplanner.com/icon/map-marker-icon.png">
     </div></span>
     <!-- <span><div class="toolbar-button toolbar-aboutbutton" onClick="openAbout();">
-      <img src="icon/about_icon.png"/>
+      <img src="https://abetterrouteplanner.com/icon/about_icon.png"/>
     </div></span> -->
   </div>
 
   <!-- Start of overlay buttons -->
   <div id=screenbuttons class=screen-buttons>
     <div id=zoomin class="overlay-button overlay-zoomin prevent-double-click" onClick="zoomIn();">
-      <img src="icon/zoomin_icon.png" >
+      <img src="https://abetterrouteplanner.com/icon/zoomin_icon.png" >
     </div>
     <div id=zoomout class="overlay-button overlay-zoomout prevent-double-click"  onClick="zoomOut();">
-      <img src="icon/zoomout_icon.png">
+      <img src="https://abetterrouteplanner.com/icon/zoomout_icon.png">
     </div>
     <div class="overlay-button overlay-nightbutton prevent-double-click" id="nightbutton" onClick="toggleNight();">
-      <img src="icon/night_icon.png">
+      <img src="https://abetterrouteplanner.com/icon/night_icon.png">
     </div>
     <!--<div class="overlay-button overlay-navbutton prevent-double-click" id="navbutton" onClick="toggleNavigation();">
-      <img src="icon/nav_icon.png">
+      <img src="https://abetterrouteplanner.com/icon/nav_icon.png">
     </div>-->
     <div class="overlay-button overlay-mapbutton prevent-double-click" id="mapbutton" onClick="toggleMap();">
-      <img src="icon/map-marker-icon.png">
+      <img src="https://abetterrouteplanner.com/icon/map-marker-icon.png">
     </div>
     <div class="overlay-button overlay-centerbutton prevent-double-click" id="centerbutton" onClick="toggleCenter();">
-      <img src="icon/center_icon.png">
+      <img src="https://abetterrouteplanner.com/icon/center_icon.png">
     </div>
     <div class="overlay-button overlay-plugbutton prevent-double-click" id="plugbutton" onClick="togglePlugOverlay();">
-      <img src="icon/plug_button.png">
+      <img src="https://abetterrouteplanner.com/icon/plug_button.png">
     </div>
   </div>
   <div id=expandbutton class="overlay-button overlay-expand prevent-double-click" onClick="toggleScreenButtons();">
-    <img id=overlay-expand-plus src="icon/plus_icon.png"/>
-    <img id=overlay-expand-x src="icon/x_icon.png" style="display: none;"/>
+    <img id=overlay-expand-plus src="https://abetterrouteplanner.com/icon/plus_icon.png"/>
+    <img id=overlay-expand-x src="https://abetterrouteplanner.com/icon/x_icon.png" style="display: none;"/>
   </div>
   <div id=aboutbutton class="overlay-button overlay-aboutbutton prevent-double-click" onClick="openAbout();">
-    <img src="icon/about_icon.png"/>
+    <img src="https://abetterrouteplanner.com/icon/about_icon.png"/>
   </div>
   <!-- End of overlay buttons. -->
   <div class="overlay-expandbutton-center" id="show-button" style="display: none;">
     <div class="overlay-expandbutton prevent-double-click" onclick="showRouteplanner();">
-      <img class="expandbutton" src="icon/down_expand_icon.png"/>
+      <img class="expandbutton" src="https://abetterrouteplanner.com/icon/down_expand_icon.png"/>
     </div>
   </div>
   
@@ -9044,7 +9044,7 @@
     <div class="overlay-close prevent-double-click overlay-about-close" onclick="closeAbout();"></div>
     <div class="overlay-dialog overlay-about" onClick="closeAbout();">
       <div class=aboutlabel>
-        <img class="toolbar-logo" src="icon/abrp_icon.png" style="width: 40px"/> A Better Routeplanner 3.7
+        <img class="toolbar-logo" src="https://abetterrouteplanner.com/icon/abrp_icon.png" style="width: 40px"/> A Better Routeplanner 3.7
       </div>
       <div class=abouttext>
         
@@ -9058,8 +9058,8 @@
             </td>
           </tr>
           <tr>
-            <td ><img class=aboutshot src="icon/at_home_shot.png"></td>
-            <td><img class=aboutshot src="icon/in_car_shot.png"></td>
+            <td ><img class=aboutshot src="https://abetterrouteplanner.com/icon/at_home_shot.png"></td>
+            <td><img class=aboutshot src="https://abetterrouteplanner.com/icon/in_car_shot.png"></td>
           </tr>
           <tr>
             <td style="padding-right:15px;padding-bottom:20px;vertical-align:top;width:50%;"><div class=aboutheading>Plan and Play at Home</div>
@@ -9080,7 +9080,7 @@
             <td style="vertical-align:top;width:50%;"><div class=aboutheading>Drive and Follow-Up in Car</div>
               <div class=abouttext>
                 <p>While driving, ABRP will show you the planned charge profile so that you can follow up your actual charge and consumption. Not according to plan? Replan as you drive. </p>
-                <p>If you login with MyTesla or using an <a class=abouttext href="blog/index.php/2018/09/09/generic-obd-and-torque-pro-setup-instructions">OBD reader</a>, you will get your car's State-of-Charger (SoC %), and ABRP will automatically calculate your reference consumption for you.</p>
+                <p>If you login with MyTesla or using an <a class=abouttext href="https://abetterrouteplanner.com/blog/index.php/2018/09/09/generic-obd-and-torque-pro-setup-instructions">OBD reader</a>, you will get your car's State-of-Charger (SoC %), and ABRP will automatically calculate your reference consumption for you.</p>
                 <p>While you are driving, you are anonymously sharing your driving data with us so that we can improve ABRP for everyone. Happy driving!</p>
               </div>
             </td>
@@ -9088,7 +9088,7 @@
           
           <tr>
             <td colspan=2 class=abouttext>
-              <p><a href="http://www.bredbandsson.se"><img class="bredbandssonlogo" src="icon/logo_bredbandsson.png" align="right" /></a>Big thanks go out to <a class="abouttext" href="http://www.bredbandsson.se/">Bredbandsson.se</a> for hosting our work-hauling servers!</p>
+              <p><a href="http://www.bredbandsson.se"><img class="bredbandssonlogo" src="https://abetterrouteplanner.com/icon/logo_bredbandsson.png" align="right" /></a>Big thanks go out to <a class="abouttext" href="http://www.bredbandsson.se/">Bredbandsson.se</a> for hosting our work-hauling servers!</p>
               <p>Also thanks to <a class="abouttext" href="http://teslaclubsweden.se">Tesla Club Sweden</a> for moral support, feature ideas and testing! 
                 Further thanks to <a class="abouttext" href="http://uppladdning.nu">uppladdning.nu</a>, 
                 <a class="abouttext" href="https://supercharge.info">SuperCharge.info</a>, 
@@ -9142,7 +9142,7 @@
                   <td style="vertical-align: top;" colspan=3 onClick="event.stopPropagation();">
                     <form style="margin-block-end: 0px; text-align: center;">
                       <span class=currencytext>BTC&nbsp;</span>
-                      <img src="icon/bitcoin.png" style="width: 24px; vertical-align: middle" alt="BTC"> <span style="font-size: 6pt; color: white">1Q4PdUxe32V6eTbXm9rgyWmGWnxMrkW2kG</span>
+                      <img src="https://abetterrouteplanner.com/icon/bitcoin.png" style="width: 24px; vertical-align: middle" alt="BTC"> <span style="font-size: 6pt; color: white">1Q4PdUxe32V6eTbXm9rgyWmGWnxMrkW2kG</span>
                     </form>
                   </td>
                 </tr>
@@ -9168,7 +9168,7 @@
           <tr><td class=label>MyTesla password</td><td><input type=password size=22 class=input name=myteslapass></td></tr>
           <tr><td class=label></td><td style="font-style: italic; font-size: 14pt; color: white;">or</td></tr>
           <tr><td class=label>MyTesla access token</td><td><input type=text size=22 class=input name=myteslatoken title="If you are more security conscious and do not wish to submit your MyTesla password, give a valid MyTesla access token here instead."></td></tr>
-          <tr><td class=label>Share data<br/><a class=labellink href="blog/index.php/2018/08/26/sharing-data-with-abrp/">(What is this?)</a></td><td><input type=checkbox class=settingsinput name=share_data size=10 checked title="Share anonymous car data, like charging rate, with ABRP for improved charging and consumption models."> <span class=checkboxlabel onClick="toggleCheckBox('share_data');">Share driving and charging data with ABRP</span></td></tr>
+          <tr><td class=label>Share data<br/><a class=labellink href="https://abetterrouteplanner.com/blog/index.php/2018/08/26/sharing-data-with-abrp/">(What is this?)</a></td><td><input type=checkbox class=settingsinput name=share_data size=10 checked title="Share anonymous car data, like charging rate, with ABRP for improved charging and consumption models."> <span class=checkboxlabel onClick="toggleCheckBox('share_data');">Share driving and charging data with ABRP</span></td></tr>
           <tr><td class=label></td><td><input type=checkbox class=settingsinput name=background_sharing size=10 title="Allow ABRP to get data from your vehicle up to 36 hours after using ABRP in a browser. This gives us a lot more data without you having to have an active browser all time time!"> <span class=checkboxlabel onClick="toggleCheckBox('background_sharing');">36h Background Sharing</span></td></tr>
           <tr><td></td><td><div class=actionbutton type=button id=login-button onClick="myTeslaLogin();" style="float:right;">Log In</div></td></tr>
         </form>
@@ -9192,7 +9192,7 @@
         of care is taken to make sure that the data is anonymous and cannot reveal anything personal about you (such as position).
       </div>
       <div class="overlay-closebutton prevent-double-click" onClick="closeMyTesla();">
-        <img class="closebutton" src="icon/close_icon.png"/>
+        <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>
   </div>
@@ -9229,7 +9229,7 @@
         This login is used to synchronize your plans and settings between multiple devices, for example your computer and your car. You can use the same account on as many devices as you want. Your MyTesla login information will never be stored or synchronized.
       </div>
       <div class="overlay-closebutton prevent-double-click" onClick="closeLogin();">
-        <img class="closebutton prevent-double-click" src="icon/close_icon.png"/>
+        <img class="closebutton prevent-double-click" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>
   </div>
@@ -9242,7 +9242,7 @@
       <canvas id="drive-canvas" class="drive-canvas" width="790" height="290"></canvas>
       <div id="drive-div" style="display: none;"></div>
       <div class="fullscreen" onClick="toggleMap();">
-        <img src="icon/fullscreen.png"/>
+        <img src="https://abetterrouteplanner.com/icon/fullscreen.png"/>
       </div>
       <div class="replanbutton" id="replandiv" onClick="calibrateAndPlan();" style="display: none;">
         <div class="replantext">
@@ -9259,7 +9259,7 @@
     </div>
     <div class="overlay-hidebutton-bottom-center">
       <div class="overlay-hidebutton-bottom prevent-double-click" onClick="setShowDriving(false, true);">
-        <img class="hidebutton" src="icon/down_expand_icon.png"/>
+        <img class="hidebutton" src="https://abetterrouteplanner.com/icon/down_expand_icon.png"/>
       </div>
     </div>
     <div class="overlay-battery" id="batterydisplayoverlay" style="display: none;">
@@ -9267,7 +9267,7 @@
         <div class="batteryfill" id="batteryfill">
         </div>
       </div>
-      <img class="batterydisplayicon" src="icon/battery.png"/>
+      <img class="batterydisplayicon" src="https://abetterrouteplanner.com/icon/battery.png"/>
       <div class="batterylabel" id="batterylabel">
         Estimated Battery
       </div>
@@ -9285,7 +9285,7 @@
   
   <div class="overlay-expandbutton-bottom-center" id="graphbutton" style="display: none;" >
     <div class="overlay-expandbutton-bottom prevent-double-click" onClick="setShowDriving(true, true);">
-      <img class="expandbutton" src="icon/up_expand_icon.png"/>
+      <img class="expandbutton" src="https://abetterrouteplanner.com/icon/up_expand_icon.png"/>
     </div>
   </div>
   
@@ -9297,7 +9297,7 @@
       <canvas id="directions-canvas" class="directions-canvas" width="600" height="400"></canvas>
       <div class="overlay-dirdist" id="dirdist-div"></div>
       <div class="overlay-closebutton prevent-double-click" onClick="hideNav();">
-        <img class="closebutton" src="icon/close_icon.png"/>
+        <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>                            
   </div>
@@ -9314,7 +9314,7 @@
       </table>
     </div>
     <div class="overlay-closebutton prevent-double-click" onClick="closeNotify()";>
-      <img class="closebutton" src="icon/close_icon.png"/>
+      <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
     </div>
   </div>
   
@@ -9331,8 +9331,8 @@
   </div>
   
   <div class="overlay-speedlimit" id="speedlimitoverlay" style="display: none;">
-    <img id="speedlimitsign_eu" src="icon/speedsign.png"/>
-    <img id="speedlimitsign_us" src="icon/speedsign_us.png"  style="display: none;"/>
+    <img id="speedlimitsign_eu" src="https://abetterrouteplanner.com/icon/speedsign.png"/>
+    <img id="speedlimitsign_us" src="https://abetterrouteplanner.com/icon/speedsign_us.png"  style="display: none;"/>
     <div id="speedlimitdiv" class="speedlimittext">
       110
     </div>
@@ -9346,7 +9346,7 @@
       </table>
     </div>
     <div class="overlay-closebutton saved-closebutton prevent-double-click" onClick="closeSaved();">
-      <img class="closebutton" src="icon/close_icon.png"/>
+      <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
     </div>
   </div>
   
@@ -9384,7 +9384,7 @@
       </tr>
       <tr>
         <td class=labelplanlinks>Share to App</td>
-        <td colspan=3 ><a class=actionbutton style="width:100%; text-align:center; padding:5px;" id=geo-share-btn href="geo://37.7749,-122.4194">Share next Step</a></td>
+        <td colspan=3 ><a class=actionbutton style="width:100%; text-align:center; padding:5px;" id=geo-share-btn href="https://abetterrouteplanner.com/geo://37.7749,-122.4194">Share next Step</a></td>
       </tr>
       <tr>
         <td class=labelplanlinks>ABRP Plan Link</td><td><input readonly type=text class=linksinput id=plan-link></td>
@@ -9410,7 +9410,7 @@
       </tr>
     </table>
     <div class="overlay-closebutton prevent-double-click" onClick="closeGetLinks();">
-      <img class="closebutton" src="icon/close_icon.png"/>
+      <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
     </div>
   </div>
 </div>
@@ -9430,7 +9430,7 @@
       </table>
     </form>
     <div class="overlay-closebutton  prevent-double-click" onClick="closeWaypointOptions();">
-      <img class="closebutton" src="icon/close_icon.png"/>
+      <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
     </div>
   </div>
 </div>
@@ -9520,7 +9520,7 @@
       </tbody>
     </table>
     <div class="overlay-closebutton" onClick="closeOverlay('telemetry-div');">
-      <img class="closebutton" src="icon/close_icon.png"/>
+      <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
     </div>
   </div>
 </div>
@@ -9534,7 +9534,7 @@
         <input class=actionbutton style="float:right; margin:5;" type=button id=obd-instr-next value="Next" onClick="obd_instr.setOBDSetupPage('next');"/>
       </div>
       <div class="overlay-closebutton" onClick="closeOverlay('obd-setup-div'); showOverlay('telemetry-div')">
-        <img class="closebutton" src="icon/close_icon.png"/>
+        <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>
   </div>
@@ -9598,36 +9598,36 @@
         </tr><tr class="pluglabels">
           <td class="plugbutton prevent-double-click" id="j1772_td" onclick="onPlugToggle('j1772');">
             <div class="plugdiv">
-              <div id="j1772_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="j1772_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/j1772_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/j1772_white.png"/>
               </div>
               <div>J-1772</div>
               <div>1.4-19.2kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="type2_td" onclick="onPlugToggle('type2');" >
             <div class="plugdiv">
-              <div id="type2_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="type2_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/type2_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/type2_white.png"/>
               </div>
               <div>Type 2</div>
               <div>3-50kW</div>
             </div>
           </td><td class="plugbutton " id="type2tesla_td" onclick="onPlugToggle('type2tesla');" >
             <div class="plugdiv">
-              <div id="type2tesla_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="type2tesla_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/type2_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/type2_white.png"/>
               </div>
               <div>Tesla</div>
               <div>11-22kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="tesla_td" onclick="onPlugToggle('tesla');">
             <div class="plugdiv">
-              <div id="tesla_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="tesla_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/tesla_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/tesla_white.png"/>
               </div>
               <div>Tesla</div>
               <div>1.4-19.2kW</div>
@@ -9638,36 +9638,36 @@
         </tr><tr class="pluglabels">
           <td class="plugbutton prevent-double-click" id="nema1450_td" onclick="onPlugToggle('nema1450');">
             <div class="plugdiv">
-              <div id="nema1450_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="nema1450_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/nema14-50_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/nema14-50_white.png"/>
               </div>
               <div>NEMA 14-50</div>
               <div>9.6kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="nemaTT30_td" onclick="onPlugToggle('nemaTT30');">
             <div class="plugdiv">
-              <div id="nemaTT30_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="nemaTT30_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/nemaTT-30_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/nemaTT-30_white.png"/>
               </div>
               <div>NEMA TT-30</div>
               <div>2.9kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="nema520_td" onclick="onPlugToggle('nema520');">
             <div class="plugdiv">
-              <div id="nema520_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="nema520_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/nema5-20_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/nema5-20_white.png"/>
               </div>
               <div>NEMA 5-20</div>
               <div>1.9kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="nema515_td" onclick="onPlugToggle('nema515');">
             <div class="plugdiv">
-              <div id="nema515_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="nema515_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/nema5-15_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/nema5-15_white.png"/>
               </div>
               <div>NEMA 5-15</div>
               <div>1.4kW</div>
@@ -9676,27 +9676,27 @@
         </tr><tr class="pluglabels">
           <td class="plugbutton prevent-double-click" id="cee_red_td" onclick="onPlugToggle('cee_red');">
             <div class="plugdiv">
-              <div id="cee_red_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="cee_red_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/cee_red_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/cee_red_white.png"/>
               </div>
               <div>CEE Red</div>
               <div>11kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="cee_blue_td" onclick="onPlugToggle('cee_blue');">
             <div class="plugdiv">
-              <div id="cee_blue_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="cee_blue_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/cee_blue_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/cee_blue_white.png"/>
               </div>
               <div>CEE Blue</div>
               <div>2-4 kW</div>
             </div>
           </td><td class="plugbutton prevent-double-click" id="schuko_td" onclick="onPlugToggle('schuko');">
             <div class="plugdiv">
-              <div id="schuko_check" class="plugcheck"><img src="icon/check.png"></div>
+              <div id="schuko_check" class="plugcheck"><img src="https://abetterrouteplanner.com/icon/check.png"></div>
               <div>
-                <img src="icon/overlay_icons/level_2/schuko_white.png"/>
+                <img src="https://abetterrouteplanner.com/icon/overlay_icons/level_2/schuko_white.png"/>
               </div>
               <div>Schuko</div>
               <div>1-3kW</div>
@@ -9705,7 +9705,7 @@
         </tr>
       </table>
       <div class="overlay-closebutton  prevent-double-click" onclick="togglePlugOverlay();">
-        <img class="closebutton" src="icon/close_icon.png"/>
+        <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>
   </div>
@@ -9723,12 +9723,12 @@
               <table class="inputtable">
                 <tr>
                   <td>
-                    <img class="inputarrow prevent-double-click" id="inputcharger-left" src="icon/left_expand_icon.png" onclick="onInputChargerPrev();">
+                    <img class="inputarrow prevent-double-click" id="inputcharger-left" src="https://abetterrouteplanner.com/icon/left_expand_icon.png" onclick="onInputChargerPrev();">
                   </td>
                   <td id=input-charger>
                   </td>
                   <td>
-                      <img class="inputarrow prevent-double-click" id="inputcharger-right" src="icon/right_expand_icon.png" onclick="onInputChargerNext();">
+                      <img class="inputarrow prevent-double-click" id="inputcharger-right" src="https://abetterrouteplanner.com/icon/right_expand_icon.png" onclick="onInputChargerNext();">
                   </td>
                 </tr>
               </table>
@@ -9741,7 +9741,7 @@
         </form>
       </table>
       <div class="overlay-closebutton overlay-input-close prevent-double-click" style="display:none;" onClick="onCloseInputDialog();">
-        <img class="closebutton" src="icon/close_icon.png"/>
+        <img class="closebutton" src="https://abetterrouteplanner.com/icon/close_icon.png"/>
       </div>
     </div>
   </div>
